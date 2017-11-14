@@ -2,26 +2,18 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import com.qualcomm.robotcore.util.Range;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
+@Autonomous(name="9219Auto", group="9219Code")
+public class 9219Auto extends LinearOpMode {
 
-@Autonomous(name="DevinScrub", group="LinearOpMode")  // @Autonomous(...) is the other common choice
-//@Disabled
-public class Auto extends LinearOpMode {
-
-    DcMotor MotorLeft;
-    DcMotor MotorRight;
-
-    private DcMotor LbMotor;
-    private DcMotor LfMotor;
-    private DcMotor RfMotor;
-    private DcMotor RbMotor;
-
-
+    private DcMotor RB;
+    private DcMotor RF;
+    private DcMotor LF;
+    private DcMotor LB;
 
     @Override
     public void runOpMode() {
@@ -43,37 +35,37 @@ public class Auto extends LinearOpMode {
 
 
         // run until the end of the match (driver presses STOP)
-        while (opModeIsActive()) {
+        while(opModeIsActive()) {
 
 
         }
     }
    public void TankForward(double power) {
-       RbMotor.setPower(power);
-       RfMotor.setPower(power);
-       LbMotor.setPower(power);
-       LfMotor.setPower(power);
+       RBMotor.setPower(power);
+       RFMotor.setPower(power);
+       LBMotor.setPower(-power);
+       LFMotor.setPower(-power);
 
    }
     public void TankRight(double power) {
-        RbMotor.setPower(-power);
-        RfMotor.setPower(-power);
-        LbMotor.setPower(power);
-        LfMotor.setPower(power);
+        RBMotor.setPower(power);
+        RFMotor.setPower(power);
+        LBMotor.setPower(-power);
+        LFMotor.setPower(-power);
 
 }
     public void TankLeft(double power){
-        RbMotor.setPower(power);
-        RfMotor.setPower(power);
-        LbMotor.setPower(-power);
-        LfMotor.setPower(-power);
+        RBMotor.setPower(-power);
+        RFMotor.setPower(-power);
+        LBMotor.setPower(power);
+        LFMotor.setPower(power);
 
     }
     public void TankBack(double power){
-        RbMotor.setPower(-power);
-        RfMotor.setPower(-power);
-        LbMotor.setPower(-power);
-        LfMotor.setPower(-power);
+        RBMotor.setPower(-power);
+        RFMotor.setPower(-power);
+        LBMotor.setPower(power);
+        LFMotor.setPower(power);
 
     }
 
