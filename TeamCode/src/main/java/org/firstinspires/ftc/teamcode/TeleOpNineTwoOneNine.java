@@ -39,8 +39,6 @@ public class TeleOpNineTwoOneNine extends LinearOpMode {
         CB.setDirection(DcMotor.Direction.REVERSE);
         GM.setDirection(DcMotor.Direction.REVERSE);
 
-        boolean ClickedOnce = false;
-
         waitForStart();
 
         while (opModeIsActive()) {
