@@ -64,6 +64,28 @@ public class TeleOpNineTwoOneNine extends LinearOpMode {
             CB.setPower(CBpower);
             GM.setPower(GMpower);
 
+            if (gamepad1.y) {
+                RG.setPosition(0.5);
+                LG.setPosition(0.3);
+
+            }
+
+            if (gamepad1.a) {
+                RG.setPosition(0.1);
+                LG.setPosition(0.7);
+
+            }
+
+            if (gamepad1.x) {
+                RG.getController().pwmDisable();
+                LG.getController().pwmDisable();
+
+            }
+
+            if (gamepad1.b) {
+                RG.getController().pwmEnable();
+                LG.getController().pwmEnable();
+            }
         }
     }
 }
