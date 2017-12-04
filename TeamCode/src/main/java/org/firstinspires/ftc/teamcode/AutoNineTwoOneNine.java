@@ -17,7 +17,7 @@ public class AutoNineTwoOneNine extends LinearOpMode {
     private DcMotor CB;
     private Servo RG;
     private Servo LG;
-    private ColorSensor CS;
+    private ColorSensor RC;
     private String colorFound;
 
     public void runOpMode() throws InterruptedException {
@@ -27,21 +27,24 @@ public class AutoNineTwoOneNine extends LinearOpMode {
         LB = hardwareMap.get(DcMotor.class, "LBMotor");
         RB = hardwareMap.get(DcMotor.class, "RBMotor");
         CB = hardwareMap.get(DcMotor.class, "CBMotor");
+        GM = hardwareMap.get(DcMotor.class, "GMMotor");
         RG = hardwareMap.get(Servo.class, "RGServo");
-        LG = hardwareMap.get(Servo.class, "LGServo");CS = hardwareMap.get(ColorSensor.class, "CSensor"); //change to left and right color sensors listed in the electronics layout
+        LG = hardwareMap.get(Servo.class, "LGServo");
+        RC = hardwareMap.get(ColorSensor.class, "RCSensor");
 
         LF.setDirection(DcMotor.Direction.FORWARD);
         RF.setDirection(DcMotor.Direction.REVERSE);
         RB.setDirection(DcMotor.Direction.REVERSE);
         LB.setDirection(DcMotor.Direction.FORWARD);
-        CB.setDirection(DcMotor.Direction.FORWARD);
+        CB.setDirection(DcMotor.Direction.REVERSE);
+        GM.setDirection(DcMotor.Direction.REVERSE);
 
         waitForStart();
 
         while (opModeIsActive()) {
 
-            telemetry.addData("color red: ", CS.red());
-            telemetry.addData("color blue: ", CS.blue());
+            telemetry.addData("color red: ", RC.red());
+            telemetry.addData("color blue: ", RC.blue());
         }
     }
 
