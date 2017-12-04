@@ -28,8 +28,7 @@ public class AutoNineTwoOneNine extends LinearOpMode {
         RB = hardwareMap.get(DcMotor.class, "RBMotor");
         CB = hardwareMap.get(DcMotor.class, "CBMotor");
         RG = hardwareMap.get(Servo.class, "RGServo");
-        LG = hardwareMap.get(Servo.class, "LGServo");
-        CS = hardwareMap.get(ColorSensor.class, "CSensor"); //change to left and right color sensors listed in the electronics layout
+        LG = hardwareMap.get(Servo.class, "LGServo");CS = hardwareMap.get(ColorSensor.class, "CSensor"); //change to left and right color sensors listed in the electronics layout
 
         LF.setDirection(DcMotor.Direction.FORWARD);
         RF.setDirection(DcMotor.Direction.REVERSE);
@@ -38,24 +37,12 @@ public class AutoNineTwoOneNine extends LinearOpMode {
         CB.setDirection(DcMotor.Direction.FORWARD);
 
         waitForStart();
-        TankForward(0.5);
-        Thread.sleep(1000);
 
         while (opModeIsActive()) {
-            if (CS.red() > CS.blue()) {
-                colorFound = "Red";
-                telemetry.addData("Color Found ;", colorFound);
-                telemetry.update();
-                TankForward(.5);
-                Thread.sleep(500);
-            } else {
-                TankBack(0.5);
-                Thread.sleep(500);
-            }
-        }
-        TankStrafeLeft(.5);
-        Thread.sleep(1000);
 
+            telemetry.addData("color red: ", CS.red());
+            telemetry.addData("color blue: ", CS.blue());
+        }
     }
 
     private void TankForward(double power) {

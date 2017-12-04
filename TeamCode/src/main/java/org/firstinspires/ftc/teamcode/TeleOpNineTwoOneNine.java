@@ -48,12 +48,12 @@ public class TeleOpNineTwoOneNine extends LinearOpMode {
             double LFpower = (gamepad1.left_stick_y - gamepad1.right_stick_x);
             double LBpower = (gamepad1.left_stick_y - gamepad1.right_stick_x);
             double CBpower = (gamepad1.left_stick_x);
-            double GMpower = (gamepad1.right_stick_y);
+            double GMpower = (gamepad2.right_stick_y);
 
-            RFpower = Range.clip(RFpower,-0.25, 0.25);
-            RBpower = Range.clip(RBpower,-0.25, 0.25);
-            LFpower = Range.clip(LFpower,-0.25, 0.25);
-            LBpower = Range.clip(LBpower,-0.25, 0.25);
+            RFpower = Range.clip(RFpower,-0.5, 0.5);
+            RBpower = Range.clip(RBpower,-0.5, 0.5);
+            LFpower = Range.clip(LFpower,-0.5, 0.5);
+            LBpower = Range.clip(LBpower,-0.5, 0.5);
             CBpower = Range.clip(CBpower,-0.5, 0.5);
             GMpower = Range.clip(GMpower,-0.5, 0.5);
 
@@ -64,25 +64,25 @@ public class TeleOpNineTwoOneNine extends LinearOpMode {
             CB.setPower(CBpower);
             GM.setPower(GMpower);
 
-            if (gamepad1.y) {
+            if (gamepad2.y) {
                 RG.setPosition(0.5);
                 LG.setPosition(0.3);
 
             }
 
-            if (gamepad1.a) {
+            if (gamepad2.a) {
                 RG.setPosition(0.1);
                 LG.setPosition(0.7);
 
             }
 
-            if (gamepad1.x) {
+            if (gamepad2.x) {
                 RG.getController().pwmDisable();
                 LG.getController().pwmDisable();
 
             }
 
-            if (gamepad1.b) {
+            if (gamepad2.b) {
                 RG.getController().pwmEnable();
                 LG.getController().pwmEnable();
             }
