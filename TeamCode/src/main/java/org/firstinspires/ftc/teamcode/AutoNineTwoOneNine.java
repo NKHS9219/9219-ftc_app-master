@@ -15,6 +15,7 @@ public class AutoNineTwoOneNine extends LinearOpMode {
     private DcMotor LF;
     private DcMotor LB;
     private DcMotor CB;
+    private DcMotor GM;
     private Servo RG;
     private Servo LG;
     private ColorSensor RC;
@@ -88,4 +89,4 @@ public class AutoNineTwoOneNine extends LinearOpMode {
         LF.setPower(-power);
         LB.setPower(-power);
     }
-    }
+}
