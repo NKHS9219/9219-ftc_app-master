@@ -7,8 +7,8 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 
 
-@TeleOp(name = "TeleOpNineTwoOneNine", group = "Master")
-public class TeleOpNineTwoOneNine extends LinearOpMode {
+@TeleOp(name = "OneControllerTeleOpNineTwoOneNine", group = "Master")
+public class OneControllerTeleOpNineTwoOneNine extends LinearOpMode {
 
     private DcMotor RB; //1.0
     private DcMotor RF; //1.1
@@ -37,7 +37,7 @@ public class TeleOpNineTwoOneNine extends LinearOpMode {
         RB.setDirection(DcMotor.Direction.REVERSE);
         LB.setDirection(DcMotor.Direction.FORWARD);
         CB.setDirection(DcMotor.Direction.REVERSE);
-        GM.setDirection(DcMotor.Direction.REVERSE);
+        GM.setDirection(DcMotor.Direction.FORWARD);
 
         waitForStart();
 
@@ -48,7 +48,7 @@ public class TeleOpNineTwoOneNine extends LinearOpMode {
             double LFpower = (gamepad1.left_stick_y - gamepad1.right_stick_x);
             double LBpower = (gamepad1.left_stick_y - gamepad1.right_stick_x);
             double CBpower = (gamepad1.left_stick_x);
-            double GMpower = (gamepad2.right_stick_y);
+            double GMpower = (gamepad1.right_stick_y);
 
             RFpower = Range.clip(RFpower,-0.5, 0.5);
             RBpower = Range.clip(RBpower,-0.5, 0.5);
@@ -57,6 +57,10 @@ public class TeleOpNineTwoOneNine extends LinearOpMode {
             CBpower = Range.clip(CBpower,-0.5, 0.5);
             GMpower = Range.clip(GMpower,-0.5, 0.5);
 
+            int position = GM.getCurrentPosition();
+            telemetry.addData("GMEncoder", position);
+            GM.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
             LF.setPower(LFpower);
             RF.setPower(RFpower);
             LB.setPower(LBpower);
@@ -64,27 +68,16 @@ public class TeleOpNineTwoOneNine extends LinearOpMode {
             CB.setPower(CBpower);
             GM.setPower(GMpower);
 
-            if (gamepad2.y) {
+            if (gamepad1.b) {
                 RG.setPosition(0.5);
                 LG.setPosition(0.3);
 
             }
 
-            if (gamepad2.a) {
+            if (gamepad1.a) {
                 RG.setPosition(0.1);
                 LG.setPosition(0.7);
 
-            }
-
-            if (gamepad2.x) {
-                RG.getController().pwmDisable();
-                LG.getController().pwmDisable();
-
-            }
-
-            if (gamepad2.b) {
-                RG.getController().pwmEnable();
-                LG.getController().pwmEnable();
             }
         }
     }
