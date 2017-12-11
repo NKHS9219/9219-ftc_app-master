@@ -69,15 +69,15 @@ public class OneControllerTeleOpNineTwoOneNine extends LinearOpMode {
             GM.setPower(GMpower);
 
             if (gamepad1.b) {
-                RG.setPosition(0.5);
+                RG.setPosition(0.4);
                 LG.setPosition(0.3);
 
             }
 
             if (gamepad1.a) {
-                RG.setPosition(0.1);
+                RG.setPosition(0);
                 LG.setPosition(0.7);
-
+            
             }
         }
     }

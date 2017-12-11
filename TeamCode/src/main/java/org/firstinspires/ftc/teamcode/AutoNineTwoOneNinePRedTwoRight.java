@@ -6,8 +6,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 
-@Autonomous(name="AutoNineTwoOneNinePOne", group="Master")
-public class AutoNineTwoOneNinePOne extends LinearOpMode {
+@Autonomous(name="AutoNineTwoOneNinePRedTwoRight", group="Master")
+public class AutoNineTwoOneNinePRedTwoRight extends LinearOpMode {
 
     private DcMotor RB;
     private DcMotor RF;
@@ -43,24 +43,19 @@ public class AutoNineTwoOneNinePOne extends LinearOpMode {
 
             TankClose();
             Thread.sleep(1000);
-            TankLift();
+            TankLift(); //fix
+            TankForward(-0.5);
+            Thread.sleep(1250);
+            TankTurnRight(-0.25);
+            Thread.sleep(1085);
             TankForward(-0.25);
-            Thread.sleep(1700);
-            TankStop();
-            Thread.sleep(1000);
-            TankStrafeLeft(-0.5);
-            Thread.sleep(900);
-            TankForward(-0.25);
-            Thread.sleep(500);
-            TankStop();
             Thread.sleep(1000);
             TankUnLift();
             Thread.sleep(1000);
             TankOpen();
             Thread.sleep(1000);
-            TankBack(-0.2);
-            Thread.sleep(350);
-            TankStop();
+            TankBack(-0.25);
+            Thread.sleep(500);
             stop();
         }
     }
@@ -95,6 +90,10 @@ public class AutoNineTwoOneNinePOne extends LinearOpMode {
 
     public void TankStrafeLeft(double power)  {
         CB.setPower(power);
+        RB.setPower(0);
+        RF.setPower(0);
+        LF.setPower(0);
+        LB.setPower(0);
     }
 
     public void TankTurnRight(double power)  {
@@ -113,12 +112,12 @@ public class AutoNineTwoOneNinePOne extends LinearOpMode {
     }
 
     public void TankClose () {
-        RG.setPosition(0.1);
+        RG.setPosition(0);
         LG.setPosition(0.7);
     }
 
     public void TankOpen () {
-        RG.setPosition(0.5);
+        RG.setPosition(0.4);
         LG.setPosition(0.3);
     }
 
