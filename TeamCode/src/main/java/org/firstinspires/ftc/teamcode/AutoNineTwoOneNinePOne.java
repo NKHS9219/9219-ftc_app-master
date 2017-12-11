@@ -6,8 +6,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 
-@Autonomous(name="AutoNineTwoOneNine", group="Master")
-public class AutoNineTwoOneNine extends LinearOpMode {
+@Autonomous(name="AutoNineTwoOneNinePOne", group="Master")
+public class AutoNineTwoOneNinePOne extends LinearOpMode {
 
     private DcMotor RB;
     private DcMotor RF;
