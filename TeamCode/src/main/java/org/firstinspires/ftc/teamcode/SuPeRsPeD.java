@@ -7,8 +7,8 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 
 
-@TeleOp(name = "OneControllerTeleOpNineTwoOneNine", group = "Master")
-public class OneControllerTeleOpNineTwoOneNine extends LinearOpMode {
+@TeleOp(name = "SuPeRsPeD", group = "Master")
+public class SuPeRsPeD extends LinearOpMode {
 
     private DcMotor RB; //1.0
     private DcMotor RF; //1.1
@@ -50,11 +50,11 @@ public class OneControllerTeleOpNineTwoOneNine extends LinearOpMode {
             double CBpower = (gamepad1.left_stick_x);
             double GMpower = (gamepad1.right_stick_y);
 
-            RFpower = Range.clip(RFpower,-0.5, 0.5);
-            RBpower = Range.clip(RBpower,-0.5, 0.5);
-            LFpower = Range.clip(LFpower,-0.5, 0.5);
-            LBpower = Range.clip(LBpower,-0.5, 0.5);
-            CBpower = Range.clip(CBpower,-0.5, 0.5);
+            RFpower = Range.clip(RFpower,-1, 1);
+            RBpower = Range.clip(RBpower,-1, 1);
+            LFpower = Range.clip(LFpower,-1, 1);
+            LBpower = Range.clip(LBpower,-1, 1);
+            CBpower = Range.clip(CBpower,0, 0);
             GMpower = Range.clip(GMpower,-0.5, 0.1);
 
             int position = GM.getCurrentPosition();
@@ -77,7 +77,7 @@ public class OneControllerTeleOpNineTwoOneNine extends LinearOpMode {
             if (gamepad1.a) {
                 RG.setPosition(0.3);
                 LG.setPosition(0.5);
-
+            
             }
         }
     }

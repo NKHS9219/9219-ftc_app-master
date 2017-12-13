@@ -1,7 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -45,7 +44,7 @@ public class AutoNineTwoOneNinePRedOneCenter extends LinearOpMode {
             TankClose();
             Thread.sleep(1000);
             TankForward(-0.25);
-            Thread.sleep(1700); 
+            Thread.sleep(1700);
             TankStop();
             Thread.sleep(1000);
             TankTurnLeft(-0.25);
@@ -53,12 +52,12 @@ public class AutoNineTwoOneNinePRedOneCenter extends LinearOpMode {
             TankForward(-0.25);
             Thread.sleep(500);
             TankStop();
-            Thread.sleep(1000); 
+            Thread.sleep(1000);
             TankUnLift();
             Thread.sleep(1000);
             TankOpen();
             Thread.sleep(1000);
-            TankBack(-0.2); 
+            TankBack(-0.2);
             Thread.sleep(350);
             TankStop();
             stop();
@@ -121,20 +120,20 @@ public class AutoNineTwoOneNinePRedOneCenter extends LinearOpMode {
     }
 
     public void TankClose () {
-        RG.setPosition(0);
-        LG.setPosition(0.7);
+        RG.setPosition(0.3);
+        LG.setPosition(0.5);
     }
 
     public void TankOpen () {
-        RG.setPosition(0.4);
-        LG.setPosition(0.3);
+        RG.setPosition(0.8);
+        LG.setPosition(0.1);
     }
 
     public void TankLift () {
         int position = GM.getCurrentPosition();
         telemetry.addData("GMEncoder", position);
         GM.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        GM.setTargetPosition(1); 
+        GM.setTargetPosition(1);
         GM.setPower(-0.25);
         GM.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
@@ -143,7 +142,7 @@ public class AutoNineTwoOneNinePRedOneCenter extends LinearOpMode {
         int position = GM.getCurrentPosition();
         telemetry.addData("GMEncoder", position);
         GM.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        GM.setTargetPosition(0); 
+        GM.setTargetPosition(0);
         GM.setPower(0.15);
         GM.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 

@@ -112,13 +112,13 @@ public class AutoNineTwoOneNinePRedTwoRight extends LinearOpMode {
     }
 
     public void TankClose () {
-        RG.setPosition(0);
-        LG.setPosition(0.7);
+        RG.setPosition(0.3);
+        LG.setPosition(0.5);
     }
 
     public void TankOpen () {
-        RG.setPosition(0.4);
-        LG.setPosition(0.3);
+        RG.setPosition(0.8);
+        LG.setPosition(0.1);
     }
 
     public void TankLift () {
