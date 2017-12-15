@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 
-@Autonomous(name="AutoNineTwoOneNinePRedTwoRight", group="Master")
+@Autonomous(name="AutoNineTwoOneNinePBlueTwoRight", group="Master")
 public class AutoNineTwoOneNinePBlueTwoRight extends LinearOpMode {
 
     private DcMotor RB;
@@ -43,14 +43,17 @@ public class AutoNineTwoOneNinePBlueTwoRight extends LinearOpMode {
 
             TankClose();
             Thread.sleep(1000);
-            TankLift(); //fix
             TankForward(-0.5);
             Thread.sleep(1250);
+            TankStop();
+            Thread.sleep(1000);
             TankTurnLeft(-0.25);
             Thread.sleep(1085);
+            TankStop();
+            Thread.sleep(1000);
             TankForward(-0.25);
             Thread.sleep(1000);
-            TankUnLift();
+            TankStop();
             Thread.sleep(1000);
             TankOpen();
             Thread.sleep(1000);

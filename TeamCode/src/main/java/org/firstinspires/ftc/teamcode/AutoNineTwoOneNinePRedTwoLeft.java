@@ -43,7 +43,6 @@ public class AutoNineTwoOneNinePRedTwoLeft extends LinearOpMode {
 
             TankClose();
             Thread.sleep(1000);
-            TankLift(); //fix
             TankForward(-0.5);
             Thread.sleep(1000);
             TankStop();
@@ -52,7 +51,7 @@ public class AutoNineTwoOneNinePRedTwoLeft extends LinearOpMode {
             Thread.sleep(1000);
             TankForward(-0.25);
             Thread.sleep(500);
-            TankUnLift();
+            TankStop();
             Thread.sleep(1000);
             TankOpen();
             Thread.sleep(1000);

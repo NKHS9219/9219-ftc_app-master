@@ -47,13 +47,13 @@ public class AutoNineTwoOneNinePRedOneCenter extends LinearOpMode {
             Thread.sleep(1700);
             TankStop();
             Thread.sleep(1000);
-            TankTurnLeft(-0.25);
+            TankTurnRight(-0.25);
             Thread.sleep(350);
+            TankStop();
+            Thread.sleep(1000);
             TankForward(-0.25);
             Thread.sleep(500);
             TankStop();
-            Thread.sleep(1000);
-            TankUnLift();
             Thread.sleep(1000);
             TankOpen();
             Thread.sleep(1000);

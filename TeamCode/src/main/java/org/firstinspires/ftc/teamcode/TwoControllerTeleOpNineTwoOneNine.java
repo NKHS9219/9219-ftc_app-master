@@ -48,14 +48,14 @@ public class TwoControllerTeleOpNineTwoOneNine extends LinearOpMode {
             double LFpower = (gamepad1.left_stick_y - gamepad1.right_stick_x);
             double LBpower = (gamepad1.left_stick_y - gamepad1.right_stick_x);
             double CBpower = (gamepad1.left_stick_x);
-            double GMpower = (gamepad2.right_stick_y);
+            double GMpower = (gamepad2.left_stick_y);
 
-            RFpower = Range.clip(RFpower,-0.5, 0.5);
-            RBpower = Range.clip(RBpower,-0.5, 0.5);
-            LFpower = Range.clip(LFpower,-0.5, 0.5);
-            LBpower = Range.clip(LBpower,-0.5, 0.5);
+            RFpower = Range.clip(RFpower,-0.6, 0.6);
+            RBpower = Range.clip(RBpower,-0.6, 0.6);
+            LFpower = Range.clip(LFpower,-0.6, 0.6);
+            LBpower = Range.clip(LBpower,-0.6, 0.6);
             CBpower = Range.clip(CBpower,-0.5, 0.5);
-            GMpower = Range.clip(GMpower,-0.5, 0.5);
+            GMpower = Range.clip(GMpower,-0.5, 0.1);
 
             int position = GM.getCurrentPosition();
             telemetry.addData("GMEncoder", position);
