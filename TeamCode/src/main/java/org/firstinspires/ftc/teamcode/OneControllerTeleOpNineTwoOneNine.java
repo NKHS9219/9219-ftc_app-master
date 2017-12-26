@@ -10,14 +10,14 @@ import com.qualcomm.robotcore.util.Range;
 @TeleOp(name = "OneControllerTeleOpNineTwoOneNine", group = "Master")
 public class OneControllerTeleOpNineTwoOneNine extends LinearOpMode {
 
-    private DcMotor RB; //1.0
-    private DcMotor RF; //1.1
-    private DcMotor LF; //1.2
-    private DcMotor LB; //1.3
-    private DcMotor CB; //2.0
-    private DcMotor GM; //2.1
-    private Servo RG; //1.0
-    private Servo LG; //1.1
+    private DcMotor RB; 
+    private DcMotor RF; 
+    private DcMotor LF; 
+    private DcMotor LB; 
+    private DcMotor CB; 
+    private DcMotor GM; 
+    private Servo RG; 
+    private Servo LG; 
 
     public void runOpMode() {
         telemetry.addData("Status", "Initialized");

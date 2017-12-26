@@ -1,13 +1,15 @@
 package org.firstinspires.ftc.teamcode;
 
+
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 
-@Autonomous(name="AutoNineTwoOneNinePRedTwoLeft", group="Master")
-public class AutoNineTwoOneNinePRedTwoLeft extends LinearOpMode {
+@Autonomous(name="AutoNineTwoOneNineRedOne", group="Master")
+public class AutoNineTwoOneNineRedOne extends LinearOpMode {
+
 
     private DcMotor RB;
     private DcMotor RF;
@@ -18,7 +20,9 @@ public class AutoNineTwoOneNinePRedTwoLeft extends LinearOpMode {
     private Servo RG;
     private Servo LG;
 
+
     public void runOpMode() throws InterruptedException {
+
 
         LF = hardwareMap.get(DcMotor.class, "LFMotor");
         RF = hardwareMap.get(DcMotor.class, "RFMotor");
@@ -29,6 +33,7 @@ public class AutoNineTwoOneNinePRedTwoLeft extends LinearOpMode {
         RG = hardwareMap.get(Servo.class, "RGServo");
         LG = hardwareMap.get(Servo.class, "LGServo");
 
+
         LF.setDirection(DcMotor.Direction.FORWARD);
         RF.setDirection(DcMotor.Direction.REVERSE);
         RB.setDirection(DcMotor.Direction.REVERSE);
@@ -36,32 +41,42 @@ public class AutoNineTwoOneNinePRedTwoLeft extends LinearOpMode {
         CB.setDirection(DcMotor.Direction.REVERSE);
         GM.setDirection(DcMotor.Direction.FORWARD);
 
+
         waitForStart();
+
 
         while (opModeIsActive()) {
 
 
             TankClose();
             Thread.sleep(1000);
-            TankForward(-0.5);
+            TankLift();
             Thread.sleep(1000);
+            TankForward(-0.25);
+            Thread.sleep(1700);
             TankStop();
             Thread.sleep(1000);
-            TankTurnRight(-0.25);
+            TankTurnLeft(-0.25);
+            Thread.sleep(500);
+            TankStop();
+            Thread.sleep(1000);
+            TankUnLift();
+            Thread.sleep(1000);
+            TankOpen();
             Thread.sleep(1000);
             TankForward(-0.25);
             Thread.sleep(500);
             TankStop();
             Thread.sleep(1000);
-            TankOpen();
-            Thread.sleep(1000);
-            TankBack(-0.25);
-            Thread.sleep(500);
+            TankBack(-0.2);
+            Thread.sleep(350);
+            TankStop();
             stop();
         }
     }
 
-    public void TankForward(double power) {
+
+    public void TankForward (double power) {
         RB.setPower(power);
         RF.setPower(power);
         LB.setPower(power);
@@ -74,10 +89,10 @@ public class AutoNineTwoOneNinePRedTwoLeft extends LinearOpMode {
         RF.setPower(0);
         LB.setPower(0);
         LF.setPower(0);
-        CB.setPower(0);
     }
 
-    public void TankBack(double power) {
+
+    public void TankBack (double power) {
         RB.setPower(-power);
         RF.setPower(-power);
         LB.setPower(-power);
@@ -85,15 +100,7 @@ public class AutoNineTwoOneNinePRedTwoLeft extends LinearOpMode {
     }
 
 
-    public void TankStrafeRight(double power) {
-        CB.setPower(-power);
-    }
-
-    public void TankStrafeLeft(double power)  {
-        CB.setPower(power);
-    }
-
-    public void TankTurnRight(double power)  {
+    public void TankTurnRight (double power)  {
         RB.setPower(-power);
         RF.setPower(-power);
         LF.setPower(power);
@@ -108,32 +115,37 @@ public class AutoNineTwoOneNinePRedTwoLeft extends LinearOpMode {
         LB.setPower(-power);
     }
 
+
     public void TankClose () {
         RG.setPosition(0.3);
         LG.setPosition(0.5);
     }
+
 
     public void TankOpen () {
         RG.setPosition(0.8);
         LG.setPosition(0.1);
     }
 
+
     public void TankLift () {
         int position = GM.getCurrentPosition();
         telemetry.addData("GMEncoder", position);
         GM.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        GM.setTargetPosition(1);
-        GM.setPower(-0.25);
+        GM.setTargetPosition(-500);
+        GM.setPower(-0.5);
         GM.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
+
 
     public void TankUnLift () {
         int position = GM.getCurrentPosition();
         telemetry.addData("GMEncoder", position);
         GM.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         GM.setTargetPosition(0);
-        GM.setPower(0.15);
+        GM.setPower(0.1);
         GM.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
 
     }
 }

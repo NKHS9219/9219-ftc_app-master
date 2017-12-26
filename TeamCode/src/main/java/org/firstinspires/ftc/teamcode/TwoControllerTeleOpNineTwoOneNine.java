@@ -10,14 +10,14 @@ import com.qualcomm.robotcore.util.Range;
 @TeleOp(name = "TwoControllerTeleOpNineTwoOneNine", group = "Master")
 public class TwoControllerTeleOpNineTwoOneNine extends LinearOpMode {
 
-    private DcMotor RB; //1.0
-    private DcMotor RF; //1.1
-    private DcMotor LF; //1.2
-    private DcMotor LB; //1.3
-    private DcMotor CB; //2.0
-    private DcMotor GM; //2.1
-    private Servo RG; //1.0
-    private Servo LG; //1.1
+    private DcMotor RB; 
+    private DcMotor RF; 
+    private DcMotor LF; 
+    private DcMotor LB; 
+    private DcMotor CB; 
+    private DcMotor GM; 
+    private Servo RG; 
+    private Servo LG; 
 
     public void runOpMode() {
         telemetry.addData("Status", "Initialized");
@@ -50,10 +50,10 @@ public class TwoControllerTeleOpNineTwoOneNine extends LinearOpMode {
             double CBpower = (gamepad1.left_stick_x);
             double GMpower = (gamepad2.left_stick_y);
 
-            RFpower = Range.clip(RFpower,-0.6, 0.6);
-            RBpower = Range.clip(RBpower,-0.6, 0.6);
-            LFpower = Range.clip(LFpower,-0.6, 0.6);
-            LBpower = Range.clip(LBpower,-0.6, 0.6);
+            RFpower = Range.clip(RFpower,-0.5, 0.5);
+            RBpower = Range.clip(RBpower,-0.5, 0.5);
+            LFpower = Range.clip(LFpower,-0.5, 0.5);
+            LBpower = Range.clip(LBpower,-0.5, 0.5);
             CBpower = Range.clip(CBpower,-0.5, 0.5);
             GMpower = Range.clip(GMpower,-0.5, 0.1);
 
