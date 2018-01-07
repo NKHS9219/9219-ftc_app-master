@@ -14,7 +14,6 @@ public class OneControllerTeleOpNineTwoOneNine extends LinearOpMode {
     private DcMotor RF; 
     private DcMotor LF; 
     private DcMotor LB; 
-    private DcMotor CB; 
     private DcMotor GM; 
     private Servo RG; 
     private Servo LG; 
@@ -27,7 +26,6 @@ public class OneControllerTeleOpNineTwoOneNine extends LinearOpMode {
         RF = hardwareMap.get(DcMotor.class,"RFMotor");
         LB = hardwareMap.get(DcMotor.class,"LBMotor");
         RB = hardwareMap.get(DcMotor.class,"RBMotor");
-        CB = hardwareMap.get(DcMotor.class,"CBMotor");
         GM = hardwareMap.get(DcMotor.class,"GMMotor");
         RG = hardwareMap.get(Servo.class,"RGServo");
         LG = hardwareMap.get(Servo.class,"LGServo");
@@ -36,7 +34,6 @@ public class OneControllerTeleOpNineTwoOneNine extends LinearOpMode {
         RF.setDirection(DcMotor.Direction.REVERSE);
         RB.setDirection(DcMotor.Direction.REVERSE);
         LB.setDirection(DcMotor.Direction.FORWARD);
-        CB.setDirection(DcMotor.Direction.REVERSE);
         GM.setDirection(DcMotor.Direction.FORWARD);
 
         waitForStart();
@@ -47,15 +44,13 @@ public class OneControllerTeleOpNineTwoOneNine extends LinearOpMode {
             double RBpower = (gamepad1.left_stick_y + gamepad1.right_stick_x);
             double LFpower = (gamepad1.left_stick_y - gamepad1.right_stick_x);
             double LBpower = (gamepad1.left_stick_y - gamepad1.right_stick_x);
-            double CBpower = (gamepad1.left_stick_x);
             double GMpower = (gamepad1.right_stick_y);
 
             RFpower = Range.clip(RFpower,-0.5, 0.5);
             RBpower = Range.clip(RBpower,-0.5, 0.5);
             LFpower = Range.clip(LFpower,-0.5, 0.5);
             LBpower = Range.clip(LBpower,-0.5, 0.5);
-            CBpower = Range.clip(CBpower,-0.5, 0.5);
-            GMpower = Range.clip(GMpower,-0.5, 0.1);
+            GMpower = Range.clip(GMpower,-0.5, 0.25);
 
             int position = GM.getCurrentPosition();
             telemetry.addData("GMEncoder", position);
@@ -65,7 +60,6 @@ public class OneControllerTeleOpNineTwoOneNine extends LinearOpMode {
             RF.setPower(RFpower);
             LB.setPower(LBpower);
             RB.setPower(RBpower);
-            CB.setPower(CBpower);
             GM.setPower(GMpower);
 
             if (gamepad1.b) {

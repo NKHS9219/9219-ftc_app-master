@@ -15,7 +15,6 @@ public class AutoNineTwoOneNineRedTwo extends LinearOpMode {
     private DcMotor RF;
     private DcMotor LF;
     private DcMotor LB;
-    private DcMotor CB;
     private DcMotor GM;
     private Servo RG;
     private Servo LG;
@@ -28,7 +27,6 @@ public class AutoNineTwoOneNineRedTwo extends LinearOpMode {
         RF = hardwareMap.get(DcMotor.class, "RFMotor");
         LB = hardwareMap.get(DcMotor.class, "LBMotor");
         RB = hardwareMap.get(DcMotor.class, "RBMotor");
-        CB = hardwareMap.get(DcMotor.class, "CBMotor");
         GM = hardwareMap.get(DcMotor.class, "GMMotor");
         RG = hardwareMap.get(Servo.class, "RGServo");
         LG = hardwareMap.get(Servo.class, "LGServo");
@@ -38,7 +36,6 @@ public class AutoNineTwoOneNineRedTwo extends LinearOpMode {
         RF.setDirection(DcMotor.Direction.REVERSE);
         RB.setDirection(DcMotor.Direction.REVERSE);
         LB.setDirection(DcMotor.Direction.FORWARD);
-        CB.setDirection(DcMotor.Direction.REVERSE);
         GM.setDirection(DcMotor.Direction.FORWARD);
 
 
@@ -143,7 +140,7 @@ public class AutoNineTwoOneNineRedTwo extends LinearOpMode {
         telemetry.addData("GMEncoder", position);
         GM.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         GM.setTargetPosition(0);
-        GM.setPower(0.1);
+        GM.setPower(0.25);
         GM.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 
