@@ -1,10 +1,12 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.ServoController;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
+import com.qualcomm.robotcore.hardware.CRServo;
 
 
 @TeleOp(name = "TwoControllerTeleOpNineTwoOneNine", group = "Master")
@@ -17,6 +19,7 @@ public class TwoControllerTeleOpNineTwoOneNine extends LinearOpMode {
     private DcMotor GM; 
     private Servo RG; 
     private Servo LG; 
+    private CRServo JA;
 
     public void runOpMode() {
         telemetry.addData("Status", "Initialized");
@@ -29,6 +32,7 @@ public class TwoControllerTeleOpNineTwoOneNine extends LinearOpMode {
         GM = hardwareMap.get(DcMotor.class,"GMMotor");
         RG = hardwareMap.get(Servo.class,"RGServo");
         LG = hardwareMap.get(Servo.class,"LGServo");
+        JA = hardwareMap.get(CRServo.class,"JAServo");
 
         LF.setDirection(DcMotor.Direction.FORWARD);
         RF.setDirection(DcMotor.Direction.REVERSE);
@@ -46,15 +50,17 @@ public class TwoControllerTeleOpNineTwoOneNine extends LinearOpMode {
             double LBpower = (gamepad1.left_stick_y - gamepad1.right_stick_x);
             double GMpower = (gamepad2.left_stick_y);
 
-            RFpower = Range.clip(RFpower,-0.5, 0.5);
-            RBpower = Range.clip(RBpower,-0.5, 0.5);
-            LFpower = Range.clip(LFpower,-0.5, 0.5);
-            LBpower = Range.clip(LBpower,-0.5, 0.5);
+            RFpower = Range.clip(RFpower,-1, 1);
+            RBpower = Range.clip(RBpower,-1, 1);
+            LFpower = Range.clip(LFpower,-1, 1);
+            LBpower = Range.clip(LBpower,-1, 1);
             GMpower = Range.clip(GMpower,-0.5, 0.25);
 
-            int position = GM.getCurrentPosition();
-            telemetry.addData("GMEncoder", position);
             GM.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+            RF.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+            RF.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+            LF.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+            LB.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
 
             LF.setPower(LFpower);
             RF.setPower(RFpower);
@@ -63,15 +69,36 @@ public class TwoControllerTeleOpNineTwoOneNine extends LinearOpMode {
             GM.setPower(GMpower);
 
             if (gamepad2.b) {
-                RG.setPosition(0.8);
-                LG.setPosition(0.1);
+                RG.setPosition(0.7);
+                LG.setPosition(0.3);
 
             }
 
             if (gamepad2.a) {
-                RG.setPosition(0.3);
+                RG.setPosition(0.2);
+                LG.setPosition(0.7);
+            
+            }
+                
+            if (gamepad2.y) {
+                RG.setPosition(0.4);
                 LG.setPosition(0.5);
-
+                
+            }
+            
+            if (gamepad1.x) {
+                JA.setPower(1);
+                
+            }
+            
+            if (gamepad1.y) {
+                JA.setPower(-1);
+                
+            }
+            
+            if (gamepad1.b) {
+                stop();
+                
             }
         }
     }
