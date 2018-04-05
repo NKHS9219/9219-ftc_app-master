@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode;
 
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
@@ -13,7 +12,6 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.ColorSensor;
 
 
 
@@ -27,13 +25,10 @@ public class AutoNineTwoOneNineBlueOne extends LinearOpMode {
     private DcMotor GM;
     private Servo RG;
     private Servo LG;
-    private CRServo JA;
-    private ColorSensor RC;
     private Orientation Angles;
     private VuforiaLocalizer vuforia;
     private RelicRecoveryVuMark vuMarkFound;
     private VuforiaTrackable relicTemplate;
-    String colorFound;
     String pictoGraph;
     boolean foundGraph = false;
     int threshold = 20;
@@ -51,8 +46,6 @@ public class AutoNineTwoOneNineBlueOne extends LinearOpMode {
         GM = hardwareMap.get(DcMotor.class, "GMMotor");
         RG = hardwareMap.get(Servo.class, "RGServo");
         LG = hardwareMap.get(Servo.class, "LGServo");
-        JA = hardwareMap.get(CRServo.class, "JAServo");
-        RC = hardwareMap.get(ColorSensor.class, "RCSensor");
 
 
         LF.setDirection(DcMotor.Direction.FORWARD);
@@ -66,37 +59,7 @@ public class AutoNineTwoOneNineBlueOne extends LinearOpMode {
 
         waitForStart();
         
-        JA.setPower(1);
-        Thread.sleep(2500);
-            
-            if (RC.blue() > 10) {
-                TankClose();
-                TankBack(-0.25);
-                Thread.sleep(500);
-                TankStop();
-                Thread.sleep(1000);
-                JA.setPower(-1);
-                Thread.sleep(1000);
-                TankForward(-0.25);
-                Thread.sleep(500);
-                TankStop();
-                }
-                
-            if (RC.red() > 20) {
-                TankClose();
-                TankForward(-0.25);
-                Thread.sleep(500);
-                TankStop();
-                Thread.sleep(1000);
-                JA.setPower(-1);
-                Thread.sleep(1000);
-                TankBack(-0.25);
-                Thread.sleep(500);
-                TankStop();
-                }
-                
-        
-            VuforiaFind();
+        VuforiaFind();
 
             if (pictoGraph == "Right") {
                 TankLift();
@@ -105,23 +68,27 @@ public class AutoNineTwoOneNineBlueOne extends LinearOpMode {
                 Thread.sleep(1700);
                 TankStop();
                 Thread.sleep(1000);
-                TankTurnRight(-0.25);
-                Thread.sleep(500);
+                TankTurnLeft(-0.25);
+                Thread.sleep(2000);
+                TankStop();
+                Thread.sleep(1000);
+                TankForward(-0.25);
+                Thread.sleep(1250);
+                TankStop();
+                Thread.sleep(1000);
+                TankTurnLeft(-0.25);
+                Thread.sleep(250);
                 TankStop();
                 Thread.sleep(1000);
                 TankUnLift();
                 Thread.sleep(1000);
                 TankOpen();
                 Thread.sleep(1000);
-                TankForward(-0.25);
-                Thread.sleep(500);
-                TankStop();
-                Thread.sleep(1000);
                 TankBack(-0.2);
-                Thread.sleep(350);
+                Thread.sleep(230);
                 TankStop();
                 stop();
-
+            }   
                 
             if (pictoGraph == "Center") {
                 TankLift();
@@ -130,8 +97,8 @@ public class AutoNineTwoOneNineBlueOne extends LinearOpMode {
                 Thread.sleep(1700);
                 TankStop();
                 Thread.sleep(1000);
-                TankTurnRight(-0.25);
-                Thread.sleep(500);
+                TankTurnLeft(-0.25);
+                Thread.sleep(2200);
                 TankStop();
                 Thread.sleep(1000);
                 TankUnLift();
@@ -139,14 +106,14 @@ public class AutoNineTwoOneNineBlueOne extends LinearOpMode {
                 TankOpen();
                 Thread.sleep(1000);
                 TankForward(-0.25);
-                Thread.sleep(500);
+                Thread.sleep(940);
                 TankStop();
                 Thread.sleep(1000);
                 TankBack(-0.2);
-                Thread.sleep(350);
+                Thread.sleep(215);
                 TankStop();
                 stop();
-
+            }
                     
             if (pictoGraph == "Left") {
                 TankLift();
@@ -155,8 +122,8 @@ public class AutoNineTwoOneNineBlueOne extends LinearOpMode {
                 Thread.sleep(1700);
                 TankStop();
                 Thread.sleep(1000);
-                TankTurnRight(-0.25);
-                Thread.sleep(500);
+                TankTurnLeft(-0.25);
+                Thread.sleep(2500);
                 TankStop();
                 Thread.sleep(1000);
                 TankUnLift();
@@ -168,14 +135,37 @@ public class AutoNineTwoOneNineBlueOne extends LinearOpMode {
                 TankStop();
                 Thread.sleep(1000);
                 TankBack(-0.2);
-                Thread.sleep(350);
+                Thread.sleep(215);
+                TankStop();
+                stop();
+            }
+            
+            if (pictoGraph == "Unknown") {
+                TankLift();
+                Thread.sleep(1000);
+                TankBack(-0.25);
+                Thread.sleep(1700);
+                TankStop();
+                Thread.sleep(1000);
+                TankTurnLeft(-0.25);
+                Thread.sleep(2200);
+                TankStop();
+                Thread.sleep(1000);
+                TankUnLift();
+                Thread.sleep(1000);
+                TankOpen();
+                Thread.sleep(1000);
+                TankForward(-0.25);
+                Thread.sleep(940);
+                TankStop();
+                Thread.sleep(1000);
+                TankBack(-0.2);
+                Thread.sleep(215);
                 TankStop();
                 stop();
             }
                 
             }
-        }
-    }        
 
                 public void TankForward(double power) {
                     RB.setPower(power);
@@ -253,8 +243,7 @@ public class AutoNineTwoOneNineBlueOne extends LinearOpMode {
 
                     runtime.reset();
 
-
-                    while (!foundGraph && !(runtime.milliseconds() >= 10000)) {
+                    while (!foundGraph || !(runtime.milliseconds() >= 5000)) {
 
                         RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
                         if (vuMark != RelicRecoveryVuMark.UNKNOWN) {
@@ -272,15 +261,11 @@ public class AutoNineTwoOneNineBlueOne extends LinearOpMode {
                             if (vuMarkFound == RelicRecoveryVuMark.RIGHT) {
                                 pictoGraph = "Right";
                                 foundGraph = true;
-                            }
-                            if (vuMarkFound == RelicRecoveryVuMark.UNKNOWN) {
-                                pictoGraph = "Unknown";
-                            }
-                        }
+                            }                                
+                        } 
                         telemetry.addData("Found: ", pictoGraph);
                         telemetry.update();
                     }
-                    foundGraph = false;
                 }
 
                 

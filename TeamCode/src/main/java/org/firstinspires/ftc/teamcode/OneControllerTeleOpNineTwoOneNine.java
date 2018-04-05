@@ -1,7 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -17,7 +16,6 @@ public class OneControllerTeleOpNineTwoOneNine extends LinearOpMode {
     private DcMotor GM; 
     private Servo RG; 
     private Servo LG;
-    private CRServo JA;
 
     public void runOpMode() {
         telemetry.addData("Status", "Initialized");
@@ -30,7 +28,6 @@ public class OneControllerTeleOpNineTwoOneNine extends LinearOpMode {
         GM = hardwareMap.get(DcMotor.class,"GMMotor");
         RG = hardwareMap.get(Servo.class,"RGServo");
         LG = hardwareMap.get(Servo.class,"LGServo");
-        JA = hardwareMap.get(CRServo.class,"JAServo");
 
         LF.setDirection(DcMotor.Direction.FORWARD);
         RF.setDirection(DcMotor.Direction.REVERSE);
@@ -91,15 +88,6 @@ public class OneControllerTeleOpNineTwoOneNine extends LinearOpMode {
                 
             }
             
-            if (gamepad1.dpad_left) {
-                JA.setPower(-1);
-                
-            }
-            
-            if (gamepad1.dpad_right) {
-                JA.setPower(1);
-                
-            }
         
         }
     }
